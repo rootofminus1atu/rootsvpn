@@ -7,5 +7,5 @@ CMD tailscaled --tun=userspace-networking --state=mem: & \
       --hostname=${TS_HOSTNAME} \
       --advertise-exit-node \
       --reset && \
-    tailscale serve --https=off && \
+    tailscale serve && \
     tail -f /dev/null
