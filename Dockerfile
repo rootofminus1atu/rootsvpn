@@ -9,7 +9,8 @@ RUN apk add --no-cache curl tar wget && \
 
 RUN mkdir -p /srv && echo '<!DOCTYPE html><html><body><h1>it works</h1></body></html>' > /srv/index.html
 
-RUN mkdir -p /etc/caddy && echo ":8080 {\n root * /srv\n file_server\n}" > /etc/caddy/Caddyfile
+RUN mkdir -p /etc/caddy && \
+    printf ":8080 {\n\troot * /srv\n\tfile_server\n}\n" > /etc/caddy/Caddyfile
 
 EXPOSE 8080
 
