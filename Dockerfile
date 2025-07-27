@@ -20,4 +20,4 @@ CMD tailscaled --tun=userspace-networking --state=mem: & \
       --hostname=${TS_HOSTNAME} \
       --advertise-exit-node \
       --reset && \
-    tail -f /dev/null
+    caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
