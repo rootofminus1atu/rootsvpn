@@ -1,7 +1,7 @@
 FROM tailscale/tailscale:stable
 
 RUN apk add --no-cache curl && \
-    curl -fsSL https://github.com/caddyserver/caddy/releases/latest/download/caddy_linux_amd64 -o /usr/bin/caddy && \
+    curl -fsSL https://caddyserver.com/api/download?os=linux&arch=amd64 | tar -xz -C /usr/bin --strip-components=1 caddy && \
     chmod +x /usr/bin/caddy
 
 RUN mkdir -p /srv && echo '<!DOCTYPE html><html><body><h1>it works</h1></body></html>' > /srv/index.html
