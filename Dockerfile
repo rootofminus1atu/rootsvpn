@@ -1,8 +1,11 @@
 FROM tailscale/tailscale:stable
 
-RUN apk add --no-cache curl && \
-    curl -fsSL https://caddyserver.com/api/download?os=linux&arch=amd64 | tar -xz -C /usr/bin --strip-components=1 caddy && \
-    chmod +x /usr/bin/caddy
+RUN apk add --no-cache curl tar wget && \
+    wget https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_amd64.tar.gz && \
+    tar -xzf caddy_2.8.4_linux_amd64.tar.gz && \
+    mv caddy /usr/bin/caddy && \
+    chmod +x /usr/bin/caddy && \
+    rm -f caddy_2.8.4_linux_amd64.tar.gz LICENSE README.md
 
 RUN mkdir -p /srv && echo '<!DOCTYPE html><html><body><h1>it works</h1></body></html>' > /srv/index.html
 
